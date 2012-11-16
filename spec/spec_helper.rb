@@ -1,2 +1,3 @@
-require_relative '../blackjack'
+require '../blackjack'
 require 'yaml'
+require 'rspec'

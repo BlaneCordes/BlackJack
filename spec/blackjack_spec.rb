@@ -15,13 +15,17 @@ describe BlackJack do
 
 		its(:deck_of_cards) { should == deck_of_cards }
 
-		it "should remove the known cards from the deck" do
-			subject.remove_cards 
+		it "should calculate your current hand based on the given cards" do
+			first_card = "two of hearts"
+			second_card = "three of clubs"
+			my_hand(first_card, second_card).should == 5
 		end
 
-		it "should calculate your current hand based on the given cards" do
-			subject.deck_of_cards.size == ""
+		it "should remove the known cards from the deck" do
+			subject.remove_cards(cards)
 		end
+
+	
 	end
 
 
