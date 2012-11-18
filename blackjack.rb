@@ -1,6 +1,6 @@
 class BlackJack
-  attr_accessor :deck_of_cards
-    
+  attr_accessor :deck_of_cards, :players_cards
+
     def initialize
       @deck_of_cards = {
       :hearts => {:two => 2, :three => 3, :four => 4, :five => 5, :six => 6, :seven => 7, :eight => 8, :nine => 9, :ten => 10, :jack => 10, 
@@ -11,10 +11,22 @@ class BlackJack
                   :queen => 10, :king => 10, :ace => 11},
       :diamonds => {:two => 2, :three => 3, :four => 4, :five => 5, :six => 6, :seven => 7, :eight => 8, :nine => 9, :ten => 10, :jack => 10, 
                   :queen => 10, :king => 10, :ace => 11}
-    }
+      }
+      @players_cards = []
     end
 
-    def remove_cards(first_card, second_card, dealers_card) #removes cards from deck of cards
+    def calculate_value(card)
+      first_card = card.downcase.strip.split(" of ").map { |c| c.to_sym }
+      card_value_1 = @deck_of_cards[first_card[1]][first_card[0]]
+    end
+
+    def my_hand(first_card, second_card)
+      value_one = calculate_value(first_card)
+      value_two = calculate_value(second_card)
+      value_one + value_two
+    end
+
+    def remove_cards(cards) #removes cards from deck of cards
       @deck_of_cards[first_card.last].delete(first_card.first)
       @deck_of_cards[second_card[1]].delete(second_card[0])
       @deck_of_cards[dealers_card[1]].delete(dealers_card[0])
