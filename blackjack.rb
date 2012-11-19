@@ -26,42 +26,25 @@ class BlackJack
       value_one + value_two
     end
 
-    def remove_cards(cards) #removes cards from deck of cards
-      @deck_of_cards[first_card.last].delete(first_card.first)
-      @deck_of_cards[second_card[1]].delete(second_card[0])
-      @deck_of_cards[dealers_card[1]].delete(dealers_card[0])
+    def remove_cards(first_card, second_card, dealer_card) 
+      a = cardstring_to_symbol(first_card)
+      remove_from_deck a[1], a[0]
+      b = cardstring_to_symbol(second_card)
+      remove_from_deck b[1], b[0]
+      c = cardstring_to_symbol(dealer_card)
+      remove_from_deck c[1], c[0]
     end
 
-    def remove_player_cards
-      @first_card = first_input
-      @second_card = second_input
-      @deck_of_cards.delete(first_input)
-      @deck_of_cards.delete(second_input)
+    def cardstring_to_symbol(card)
+      first_card = card.downcase.strip.split(" of ").map { |c| c.to_sym }
     end
-    
-    def number_of_tens(deck_of_cards)
-         q = deck_of_cards[:hearts].select do |k,v|
-          v == 10
-      end
-         x = deck_of_cards[:diamonds].select do |k,v|
-          v == 10
-      end
-         y = deck_of_cards[:spades].select do |k,v|
-          v == 10
-      end
-         z = deck_of_cards[:clubs].select do |k,v|
-          v == 10
-      end
-      number_of_tens = q.count + x.count + y.count + z.count
+
+    def remove_from_deck a, b
+      @deck_of_cards[a].delete(b)
     end
-    
-    def number_of_cards(deck_of_cards)
-      [deck_of_cards[:hearts].size + deck_of_cards[:spades].size + deck_of_cards[:diamonds].size + deck_of_cards[:clubs].size]
-    end
-    
-    def odds_of_ten
-      number_of_tens / number_of_cards
-    end
+
+
   end
+    
 
   
