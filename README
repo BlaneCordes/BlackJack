@@ -1,0 +1,12 @@
+This program is being built to help calculate odds for a single player playing single deck blackjack against a dealer. 
+
+To run the program run ruby blackjackprogram.rb
+
+To run the specs run blackjack_spec.rb
+
+I am hoping to build out more features and make the program more dynamic by providing calculated odds and also integrating other potential players at the table.
+
+Let me know any thoughts/suggestions on the code or the program!
+
+Thanks,
+Blane
